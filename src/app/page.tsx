@@ -22,7 +22,7 @@ import {
   Title,
 } from "@mantine/core";
 
-import { Form, useForm, zodResolver } from "@mantine/form";
+import { useForm, zodResolver } from "@mantine/form";
 import { z } from "zod";
 
 const schema = z
@@ -96,11 +96,14 @@ export default function Home() {
     //TIP : get value of currently filled form with variable "form.values"
 
     if (form.values.plan === "funrun") price = 500;
+    if (form.values.plan === "mini") price = 800;
+    if (form.values.plan === "half") price = 1200;
+    if (form.values.plan === "full") price = 1500;
     //check the rest plans by yourself
     //TIP : check /src/app/libs/runningPlans.js
-
+   
     //check discount here
-
+    if (form.values.coupon ==="CMU2023" && form.values.hasCoupon == true)price *= 0.7;
     return price;
   };
 
@@ -187,7 +190,7 @@ export default function Home() {
           </Stack>
         </form>
 
-        {/* <Footer year={2023} fullName="Chayanin Suatap" studentId="650610560" /> */}
+        <Footer year= {2024} fullName="Chanawee Pintaya" studentId="660610744" /> 
       </Container>
 
       <TermsAndCondsModal opened={opened} close={close} />
